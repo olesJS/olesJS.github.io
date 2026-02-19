@@ -1,0 +1,141 @@
+/* Базові стилі та шрифти (Завдання 2) */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 1rem 5%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ff6347;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex; /* Горизонтальне розташування */
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+/* Ефект при наведенні (Завдання 2) */
+.nav-links a:hover {
+    color: #ff6347;
+}
+
+/* Основний контент */
+main {
+    padding: 20px 5%;
+}
+
+h2 {
+    color: #2c3e50;
+    border-bottom: 2px solid #ff6347;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+/* Flexbox для карток місць (Вимога варіанту) */
+.places-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.place-card {
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.place-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Адаптивні зображення (Завдання 3) */
+.place-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.price {
+    display: block;
+    font-weight: bold;
+    color: #27ae60;
+    margin: 10px 0;
+}
+
+/* Футер (Завдання 2) */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+.footer-info p {
+    margin: 5px 0;
+}
+
+/* АДАПТИВНІСТЬ (Завдання 3) */
+
+/* Медіа-запит для планшетів (до 768px) */
+@media (max-width: 768px) {
+    .place-card {
+        width: 45%;
+    }
+}
+
+/* Медіа-запит для мобільних (до 480px) */
+@media (max-width: 480px) {
+    /* Навігація вертикально */
+    .nav-links {
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    nav {
+        flex-direction: column;
+    }
+
+    .place-card {
+        width: 100%; /* Картка на весь екран */
+    }
+
+    body {
+        font-size: 14px; /* Адаптація тексту */
+    }
+}

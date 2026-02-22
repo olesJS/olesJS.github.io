@@ -1,20 +1,25 @@
-/* Базові стилі та шрифти (Завдання 2) */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    background-color: #f4f4f4;
+/* 1. Базові стилі (Завдання 2) */
+* {
+    box-sizing: border-box; /* [cite: 49] */
 }
 
+body {
+    font-family: Arial, sans-serif; /* [cite: 129] */
+    margin: 0; /* [cite: 130] */
+    padding: 0; /* [cite: 131] */
+    line-height: 1.6;
+    background-color: #f4f4f4; /* [cite: 132] */
+}
+
+/* 2. Заголовок та навігація (Завдання 2) */
 header {
-    background-color: #333;
-    color: white;
-    padding: 1rem 5%;
+    background-color: #333; /* [cite: 135] */
+    color: white; /* [cite: 136] */
+    padding: 1rem 5%; /* [cite: 137] */
 }
 
 nav {
-    display: flex;
+    display: flex; /* [cite: 64] */
     justify-content: space-between;
     align-items: center;
 }
@@ -26,8 +31,10 @@ nav {
 }
 
 .nav-links {
-    list-style: none;
-    display: flex; /* Горизонтальне розташування */
+    list-style: none; /* [cite: 140] */
+    display: flex; /* Горизонтальне розташування [cite: 145, 160] */
+    margin: 0;
+    padding: 0;
 }
 
 .nav-links li {
@@ -35,17 +42,16 @@ nav {
 }
 
 .nav-links a {
-    color: white;
-    text-decoration: none;
+    color: white; /* [cite: 148] */
+    text-decoration: none; /* [cite: 149] */
     transition: color 0.3s;
 }
 
-/* Ефект при наведенні (Завдання 2) */
 .nav-links a:hover {
-    color: #ff6347;
+    color: #ff6347; /* Ефект при наведенні [cite: 228] */
 }
 
-/* Основний контент */
+/* 3. Основний контент */
 main {
     padding: 20px 5%;
 }
@@ -57,85 +63,248 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* Flexbox для карток місць (Вимога варіанту) */
+hr {
+    border: 0;
+    height: 1px;
+    background: #ccc;
+    margin: 40px 0;
+}
+
+/* 4. Секція "Мої подорожі" */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-trip-btn {
+    background-color: #2c3e50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.add-trip-btn:hover {
+    background-color: #34495e;
+}
+
+.trips-grid {
+    display: flex;
+    flex-wrap: wrap; /* [cite: 63] */
+    gap: 30px;
+    justify-content: center;
+}
+
+.trip-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 350px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+}
+
+.trip-card:hover {
+    transform: translateY(-8px); /* [cite: 225] */
+}
+
+.trip-image {
+    position: relative;
+    height: 200px;
+}
+
+.trip-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* [cite: 72] */
+}
+
+.status-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: white;
+}
+
+.status-badge.planned { background-color: #3498db; }
+.status-badge.completed { background-color: #27ae60; }
+
+.trip-content { padding: 20px; }
+.trip-date { color: #e67e22; font-weight: bold; margin-bottom: 5px; }
+
+/* 5. Секція "Місця для відвідування" (Завдання 2) */
 .places-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 25px;
     justify-content: center;
 }
 
 .place-card {
-    background: white;
-    border-radius: 8px;
-    padding: 15px;
-    width: 300px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background: #fff;
+    width: 320px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column; /* Вертикальний Flex [cite: 64] */
     transition: transform 0.3s;
 }
 
-.place-card:hover {
-    transform: translateY(-5px);
-}
+.place-card:hover { transform: translateY(-5px); }
 
-/* Адаптивні зображення (Завдання 3) */
-.place-card img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 4px;
-}
+.place-img-container { height: 200px; overflow: hidden; }
+.place-img-container img { width: 100%; height: 100%; object-fit: cover; }
 
-.price {
-    display: block;
-    font-weight: bold;
-    color: #27ae60;
-    margin: 10px 0;
-}
-
-/* Футер (Завдання 2) */
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
+.place-content {
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.description { flex-grow: 1; color: #666; margin-bottom: 15px; }
+
+.place-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.place-price { /* Виправлено назву класу */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price { font-weight: bold; color: #33c108; font-size: 1.1rem; }
+.rating { color: #f1c40f; }
+
+.select-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.select-btn:hover { background-color: #e5533d; }
+
+/* 6. Секція "Бюджет" */
+.budget-container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.budget-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: flex-end;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    min-width: 180px;
+}
+
+.form-group.short { flex: 1; min-width: 100px; }
+
+.form-group label { font-weight: bold; margin-bottom: 5px; }
+
+input[type="text"], input[type="number"], select {
+    padding: 10px;
+    border: 1px solid #ccc; /* [cite: 126] */
+    border-radius: 6px;
+    outline: none;
+}
+
+input:focus, select:focus { border-color: #ff6347; }
+
+.add-btn {
+    background-color: #ff6347;
+    color: white;
+    padding: 11px 25px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.table-wrapper { overflow-x: auto; } /* [cite: 251] */
+
+.budget-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.budget-table th, .budget-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.budget-table th { background-color: #f8f9fa; }
+
+/* 7. Нижній колонтитул (Завдання 2) */
+footer {
+    background-color: #333; /* [cite: 155] */
+    color: white; /* [cite: 156] */
+    padding: 40px 5%;
+    text-align: center; /* [cite: 153] */
     margin-top: 40px;
 }
 
-.footer-info p {
-    margin: 5px 0;
-}
+.footer-info h4 { margin-bottom: 15px; }
+.footer-info p { margin: 5px 0; font-size: 0.9rem; }
+.copy { margin-top: 20px; opacity: 0.7; font-size: 0.8rem; }
 
-/* АДАПТИВНІСТЬ (Завдання 3) */
+/* 8. АДАПТИВНІСТЬ (Завдання 3) */
 
-/* Медіа-запит для планшетів (до 768px) */
+/* Планшети (до 768px) [cite: 178, 253] */
 @media (max-width: 768px) {
-    .place-card {
-        width: 45%;
-    }
+    .place-card { width: 45%; }
+    .trip-card { width: 45%; }
 }
 
-/* Медіа-запит для мобільних (до 480px) */
+/* Мобільні пристрої (до 480px) [cite: 191, 253] */
 @media (max-width: 480px) {
-    /* Навігація вертикально */
+    nav { flex-direction: column; } /* [cite: 254] */
+    
     .nav-links {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: column; /* Вертикальне меню [cite: 183, 254] */
         width: 100%;
+        text-align: center;
+        margin-top: 15px;
     }
 
-    .nav-links li {
-        margin: 10px 0;
-    }
+    .nav-links li { margin: 5px 0; }
 
-    nav {
-        flex-direction: column;
-    }
+    .section-header { flex-direction: column; text-align: center; }
+    .add-trip-btn { width: 100%; }
 
-    .place-card {
-        width: 100%; /* Картка на весь екран */
-    }
+    .place-card, .trip-card { width: 100%; } /* [cite: 255] */
 
-    body {
-        font-size: 14px; /* Адаптація тексту */
-    }
+    .budget-form { flex-direction: column; align-items: stretch; }
+    .form-group, .form-group.short { width: 100%; }
 }

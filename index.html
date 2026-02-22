@@ -21,52 +21,228 @@
 
     <main>
         <section id="trips">
-            <h2>Мої подорожі</h2>
-            <p>Перегляд запланованих та завершених мандрівок.</p>
-            <ul class="trips-list">
-                <li><strong>Париж:</strong> 15.05.2025 - 20.05.2025 (Завершено)</li>
-                <li><strong>Рим:</strong> 10.08.2025 - 17.08.2025 (Заплановано)</li>
-            </ul>
-        </section>
-
-        <hr>
-
-        <section id="places">
-            <h2>Популярні напрямки</h2>
-            <div class="places-container">
-                <article class="place-card">
-                    <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=400" alt="Італія">
-                    <h3>Амальфійське узбережжя</h3>
-                    <p>Неймовірні краєвиди та італійська кухня.</p>
-                    <span class="price">Ціна: від 800€</span>
-                    <p class="rating">Рейтинг: ★★★★★</p>
+            <div class="section-header">
+                <h2>Мої подорожі</h2>
+                <button class="add-trip-btn">+ Нова подорож</button>
+            </div>
+            <div class="trips-grid">
+                <article class="trip-card">
+                    <div class="trip-image">
+                        <img src="img/rome.jpg" alt="Рим">
+                        <span class="status-badge planned">Заплановано</span>
+                    </div>
+                    <div class="trip-content">
+                        <h3>Рим, Італія</h3>
+                        <p class="trip-date">10.08.2025 - 17.08.2025</p>
+                        <p class="trip-desc">Планую відвідати Колізей та скуштувати справжню італійську піцу.</p>
+                    </div>
                 </article>
-
-                <article class="place-card">
-                    <img src="https://images.unsplash.com/photo-1525874684015-58379d421a52?w=400" alt="Японія">
-                    <h3>Кіото, Японія</h3>
-                    <p>Місто тисячі храмів та квітучої сакури.</p>
-                    <span class="price">Ціна: від 1200€</span>
-                    <p class="rating">Рейтинг: ★★★★☆</p>
-                </article>
-
-                <article class="place-card">
-                    <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=400" alt="Греція">
-                    <h3>Санторіні, Греція</h3>
-                    <p>Білосніжні будинки на фоні синього моря.</p>
-                    <span class="price">Ціна: від 600€</span>
-                    <p class="rating">Рейтинг: ★★★★★</p>
+        
+                <article class="trip-card">
+                    <div class="trip-image">
+                        <img src="img/paris.jpg" alt="Париж">
+                        <span class="status-badge completed">Відвідано</span>
+                    </div>
+                    <div class="trip-content">
+                        <h3>Париж, Франція</h3>
+                        <p class="trip-date">15.05.2025 - 20.05.2025</p>
+                        <p class="trip-desc">Чудова весняна подорож містом світла. Ейфелева вежа була неймовірною.</p>
+                    </div>
                 </article>
             </div>
         </section>
 
         <hr>
 
+        <section id="places">
+            <h2>Місця для відвідування</h2>
+            <div class="places-container">
+                <article class="place-card">
+                    <div class="place-img-container">
+                        <img src="img/italy.jpg" alt="Італія">
+                    </div>
+                    <div class="place-content">
+                        <h3>Амальфійське узбережжя</h3>
+                        <p class="description">Неймовірні краєвиди, скелі та італійська кухня.</p>
+                        <div class="place-footer">
+                            <div class="place-price">
+                                <span class="price">від 800€</span>
+                                <span class="rating">★★★★★</span>
+                            </div>
+                            <button class="select-btn">Обрати</button>
+                        </div>
+                    </div>
+                </article>
+        
+                <article class="place-card">
+                    <div class="place-img-container">
+                        <img src="img/kyoto.jpg" alt="Кіото">
+                    </div>
+                    <div class="place-content">
+                        <h3>Кіото, Японія</h3>
+                        <p class="description">Стародавнє місто з тисячами храмів, садами та традиційними чайними будиночками, де можна відчути справжній дух Японії.</p>
+                        <div class="place-footer">
+                            <div class="place-price">
+                                <span class="price">від 1200€</span>
+                                <span class="rating">★★★★☆</span>
+                            </div>
+                            <button class="select-btn">Обрати</button>
+                        </div>
+                    </div>
+                </article>
+        
+                <article class="place-card">
+                    <div class="place-img-container">
+                        <img src="img/greece.jpg" alt="Санторіні">
+                    </div>
+                    <div class="place-content">
+                        <h3>Санторіні, Греція</h3>
+                        <p class="description">Білосніжні будинки на фоні моря.</p>
+                        <div class="place-footer">
+                            <div class="place-price">
+                                <span class="price">від 600€</span>
+                                <span class="rating">★★★★★</span>
+                            </div>
+                            <button class="select-btn">Обрати</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="place-card">
+                    <div class="place-img-container">
+                        <img src="img/bali.jpg" alt="Балі">
+                    </div>
+                    <div class="place-content">
+                        <h3>Балі, Індонезія</h3>
+                        <p class="description">Тропічний рай з густими джунглями, рисовими терасами та спокоєм океану.</p>
+                        <div class="place-footer">
+                            <div class="place-price">
+                                <span class="price">від 950€</span>
+                                <span class="rating">★★★★★</span>
+                            </div>
+                            <button class="select-btn">Обрати</button>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="place-card">
+                    <div class="place-img-container">
+                        <img src="img/new_york.jpg" alt="Нью-Йорк">
+                    </div>
+                    <div class="place-content">
+                        <h3>Нью-Йорк, США</h3>
+                        <p class="description">Мегаполіс, що ніколи не спить. Таймс-сквер, Центральний парк та хмарочоси.</p>
+                        <div class="place-footer">
+                            <div class="place-price">
+                                <span class="price">від 1100€</span>
+                                <span class="rating">★★★★☆</span>
+                            </div>
+                            <button class="select-btn">Обрати</button>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="place-card">
+                    <div class="place-img-container">
+                        <img src="img/iceland.jpg" alt="Ісландія">
+                    </div>
+                    <div class="place-content">
+                        <h3>Рейк'явік, Ісландія</h3>
+                        <p class="description">Країна льоду та вогню. Побачте північне сяйво та величні водоспади своїми очима.</p>
+                        <div class="place-footer">
+                            <div class="place-price">
+                                <span class="price">від 1300€</span>
+                                <span class="rating">★★★★★</span>
+                            </div>
+                            <button class="select-btn">Обрати</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="place-card">
+                    <div class="place-img-container">
+                        <img src="img/london.jpg" alt="Лондон">
+                    </div>
+                    <div class="place-content">
+                        <h3>Лондон, Велика Британія</h3>
+                        <p class="description">Класика та сучасність. Відвідайте Біг-Бен, Тауерський міст та насолодіться традиційним англійським чаєм.</p>
+                        <div class="place-footer">
+                            <div class="place-price">
+                                <span class="price">від 850€</span>
+                                <span class="rating">★★★★★</span>
+                            </div>
+                            <button class="select-btn">Обрати</button>
+                        </div>
+                    </div>
+                </article>
+                
+            </div>
+        </section>
+
+        <hr>
+
         <section id="budget">
-            <h2>Мій бюджет</h2>
-            <p>Плануйте свої витрати розумно.</p>
-            <div class="budget-placeholder">
-                <p>Тут ви можете створити план витрат для вашої наступної подорожі.</p>
+            <h2>Планування бюджету</h2>
+            <div class="budget-container">
+                <form class="budget-form">
+                    <div class="form-group">
+                        <label for="expense-name">Назва витрати</label>
+                        <input type="text" id="expense-name" placeholder="Наприклад: Квитки на потяг">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="expense-category">Категорія</label>
+                        <select id="expense-category">
+                            <option value="transport">Транспорт</option>
+                            <option value="hotel">Проживання</option>
+                            <option value="food">Харчування</option>
+                            <option value="entertainment">Розваги</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group short">
+                        <label for="expense-amount">Сума</label>
+                        <input type="number" id="expense-amount" placeholder="0.00">
+                    </div>
+                    
+                    <div class="form-group short">
+                        <label for="expense-currency">Валюта</label>
+                        <select id="expense-currency">
+                            <option value="UAH">₴ UAH</option>
+                            <option value="EUR">€ EUR</option>
+                            <option value="USD">$ USD</option>
+                        </select>
+                    </div>
+        
+                    <button type="button" class="add-btn">Додати</button>
+                </form>
+        
+                <div class="table-wrapper">
+                    <table class="budget-table">
+                        <thead>
+                            <tr>
+                                <th>Назва</th>
+                                <th>Категорія</th>
+                                <th>Сума</th>
+                                <th>Валюта</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Авіапереліт Львів-Рим</td>
+                                <td>Транспорт</td>
+                                <td>4500</td>
+                                <td>UAH</td>
+                            </tr>
+                            <tr>
+                                <td>Вечеря в ресторані</td>
+                                <td>Харчування</td>
+                                <td>45</td>
+                                <td>EUR</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </section>
     </main>
@@ -74,11 +250,11 @@
     <footer>
         <div class="footer-info">
             <h4>Контакти:</h4>
-            <p>Адреса: м. Львів, вул. Університетська, 1</p>
-            <p>Тел: +380 97 000 00 00</p>
-            <p>Email: contact@travelplan.com</p>
+            <p>Адреса: м. Львів, вул. С. Бандери, 28а</p>
+            <p>Тел: +380 68 000 00 00</p>
+            <p>Email: travelplan@gmail.com</p>
         </div>
-        <p class="copy">&copy; 2026 TravelPlan Platform [cite: 110]</p>
+        <p class="copy">&copy; 2026 TravelPlan</p>
     </footer>
 
 </body>

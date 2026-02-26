@@ -106,6 +106,7 @@ hr {
     width: 350px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.08);
     transition: transform 0.3s ease;
+    animation: fadeIn 0.5s ease;
 }
 
 .trip-card:hover {
@@ -212,6 +213,13 @@ hr {
     box-shadow: 0 5px 20px rgba(0,0,0,0.05);
 }
 
+.trip-settings {
+    margin-bottom: 20px; 
+    padding: 15px; 
+    background: #eef2f3; 
+    border-radius: 8px;
+}
+
 .budget-form {
     display: flex;
     flex-wrap: wrap;
@@ -265,6 +273,34 @@ input:focus, select:focus { border-color: #ff6347; }
 
 .budget-table th { background-color: #f8f9fa; }
 
+.delete-btn {
+    background: none;
+    border: none;
+    color: #e74c3c; /* Червоний колір */
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s, transform 0.1s;
+}
+
+.delete-btn:hover {
+    color: #c0392b; /* Темніший червоний при наведенні */
+    transform: scale(1.1);
+}
+
+.delete-btn svg {
+    display: block;
+}
+
+#total-budget-container {
+    margin-top: 20px;
+    font-weight: bold; 
+    font-size: 1.2rem; 
+    text-align: right;
+}
+
 /* Футер */
 footer {
     background-color: #333; 
@@ -287,7 +323,7 @@ footer {
     nav { flex-direction: column; }
     
     .nav-links {
-        flex-direction: column; /* Вертикальне меню */
+        flex-direction: column;
         width: 100%;
         text-align: center;
         margin-top: 15px;
@@ -318,4 +354,9 @@ footer {
     .form-group, .form-group.short { 
         width: 100%; 
     }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }

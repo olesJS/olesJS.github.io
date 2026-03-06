@@ -57,33 +57,6 @@ const locations = [
     }
 ];
 
-function addToMyTrips(name, country, img) {
-    const tripsGrid = document.querySelector('.trips-grid');
-    if (!tripsGrid) return;
-
-    const date = new Date();
-    date.setDate(date.getDate() + 14);
-    const dateString = date.toLocaleDateString('uk-UA');
-
-    const newTripHTML = `
-        <article class="trip-card">
-            <div class="trip-image">
-                <img src="${img}" alt="${name}">
-                <span class="status-badge planned">Заплановано</span>
-            </div>
-            <div class="trip-content">
-                <h3>${name}, ${country}</h3>
-                <p class="trip-date">${dateString} - ...</p>
-                <p class="trip-desc">Нова подорож додана зі списку рекомендованих місць!</p>
-            </div>
-        </article>
-    `;
-
-    tripsGrid.insertAdjacentHTML('afterbegin', newTripHTML);
-    alert(`"${name}" додано до ваших подорожей!`);
-    document.getElementById('trips').scrollIntoView({ behavior: 'smooth' });
-}
-
 function generateStars(count) {
     const goldStar = "★";
     const grayStar = "☆";
@@ -147,6 +120,32 @@ function initApp() {
 
 document.addEventListener('DOMContentLoaded', initApp);
 
+function addToMyTrips(name, country, img) {
+    const tripsGrid = document.querySelector('.trips-grid');
+    if (!tripsGrid) return;
+
+    const date = new Date();
+    date.setDate(date.getDate() + 14);
+    const dateString = date.toLocaleDateString('uk-UA');
+
+    const newTripHTML = `
+        <article class="trip-card">
+            <div class="trip-image">
+                <img src="${img}" alt="${name}">
+                <span class="status-badge planned">Заплановано</span>
+            </div>
+            <div class="trip-content">
+                <h3>${name}, ${country}</h3>
+                <p class="trip-date">${dateString} - ...</p>
+                <p class="trip-desc">Нова подорож додана зі списку рекомендованих місць!</p>
+            </div>
+        </article>
+    `;
+
+    tripsGrid.insertAdjacentHTML('afterbegin', newTripHTML);
+    alert(`"${name}" додано до ваших подорожей!`);
+    document.getElementById('trips').scrollIntoView({ behavior: 'smooth' });
+}
 
 let expenses = [
     { name: "Авіапереліт Львів-Рим", category: "Транспорт", amount: 4500, currency: "UAH" },

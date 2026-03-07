@@ -1,0 +1,798 @@
+/* Базові налаштування */
+* {
+    box-sizing: border-box;
+}
+
+html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content-wrap {
+    flex: 1 0 auto; /* Штовхає футер донизу */
+    padding: 20px 5%;
+}
+
+/* Хедер і навігація */
+header {
+    background-color: #333;
+    color: white; 
+    padding: 1rem 5%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ff6347;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li { margin-left: 20px; }
+.nav-links a { color: white; text-decoration: none; transition: 0.3s; }
+.nav-links a:hover { color: #ff6347; }
+
+/* Загальні елементи */
+h2 {
+    color: #2c3e50;
+    border-bottom: 2px solid #ff6347;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+/* Картки (Місця та Подорожі) */
+/* Контейнер для карток */
+.places-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+/* Базова картка місця */
+.place-card {
+    background: #fff;
+    width: 320px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    border: 1px solid #eee;
+}
+
+.place-card:hover {
+    transform: translateY(-8px);
+}
+
+/* Спеціальний стиль для Premium (5 зірок) */
+.premium-border {
+    border: 2px solid #ff6347;
+    transform: scale(1.02);
+}
+
+.premium-border:hover {
+    box-shadow: 0 12px 30px rgba(255, 99, 71, 0.3) !important;
+}
+
+/* Зображення */
+.place-img-container {
+    height: 200px;
+    overflow: hidden;
+}
+
+.place-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.place-card:hover .place-img-container img {
+    transform: scale(1.1);
+}
+
+/* Контент картки */
+.place-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.place-content h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.25rem;
+    color: #2c3e50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.description {
+    flex-grow: 1;
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* Футер картки (ціна, рейтинг, кнопка) */
+.place-footer {
+    border-top: 1px solid #f0f0f0;
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.place-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.rating {
+    color: #f1c40f;
+    letter-spacing: 2px;
+}
+
+/* Кнопка додавання */
+.select-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.select-btn:hover {
+    background-color: #e5533d;
+}
+
+.select-btn:active {
+    transform: scale(0.98);
+}
+
+.trips-grid, .places-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+}
+
+.trip-card, .place-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 350px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+    animation: fadeIn 0.5s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.trip-card { height: auto !important; }
+.trip-card:hover, .place-card:hover { transform: translateY(-8px); }
+
+.trip-image, .place-img-container { height: 200px; position: relative; }
+.trip-image img, .place-img-container img { width: 100%; height: 100%; object-fit: cover; }
+
+.status-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: white;
+    z-index: 1;
+}
+.status-badge.planned { background-color: #3498db; }
+.status-badge.completed { background-color: #27ae60; }
+
+.trip-content, .place-content { padding: 20px; flex-grow: 1; }
+
+/* Управління поїздкою на картці */
+.trip-budget-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #eee;
+}
+.trip-budget-info strong { color: #27ae60; font-size: 1.1rem; }
+
+.open-edit-btn {
+    width: 100%;
+    padding: 10px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.delete-trip-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    color: #e74c3c;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 2;
+}
+
+/* Модальні вікна (Об'єднано) */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-content {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    animation: slideDown 0.3s ease-out;
+}
+
+.wide-modal {
+    max-width: 850px;
+    width: 95%;
+    padding: 30px;
+}
+
+.modal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+/* Секція витрат у модалці */
+.expense-manager {
+    background: #fdfdfd;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.expense-list-scroll {
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.expense-item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.del-exp-btn {
+    background: none;
+    border: none;
+    color: #ff4d4d;
+    cursor: pointer;
+}
+
+/* Бюджет (Загальна сторінка) */
+.budget-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.budget-table th, .budget-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+/* Покращена широка модалка */
+.wide-modal {
+    max-width: 900px;
+    width: 95%;
+    padding: 0; /* Прибираємо внутрішній паддінг для заголовка */
+    overflow: hidden;
+    border-radius: 16px;
+    border: none;
+}
+
+.modal-header {
+    background: #2c3e50;
+    color: white;
+    padding: 20px 30px;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    border: none; /* Прибираємо стандартну лінію */
+    color: white;
+}
+
+.close-modal {
+    color: rgba(255,255,255,0.7);
+    font-size: 1.5rem;
+    transition: 0.3s;
+}
+
+.close-modal:hover {
+    color: white;
+    transform: rotate(90deg);
+}
+
+/* Сітка всередині модалки */
+.modal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 0; /* Прибираємо розрив, зробимо межу */
+    margin: 0;
+}
+
+.modal-col {
+    padding: 30px;
+}
+
+.modal-col:first-child {
+    background: #fdfdfd;
+    border-right: 1px solid #eee;
+}
+
+/* Покращення полів вводу */
+.modal-col h4 {
+    color: #34495e;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    color: #7f8c8d;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+}
+
+.modal-col input, .modal-col select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #edf2f7;
+    border-radius: 8px;
+    transition: 0.3s;
+    font-size: 0.95rem;
+}
+
+.modal-col input:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+/* Секція витрат */
+.expense-manager {
+    background: white;
+    border: 1px solid #edf2f7;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.expense-item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 8px;
+    background: #fff;
+    border: 1px solid #f1f5f9;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+.expense-item-row:hover {
+    border-color: #e2e8f0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.exp-title {
+    font-weight: 600;
+    color: #2d3748;
+}
+
+.exp-cat {
+    display: inline-block;
+    padding: 2px 8px;
+    background: #ebf8ff;
+    color: #3182ce;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    margin-top: 4px;
+}
+
+.exp-val {
+    color: #27ae60;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+/* Форма додавання витрати */
+.add-expense-inline {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 0.5fr;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.add-expense-inline button {
+    background: #ff6347;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.add-expense-inline button:hover {
+    background: #e5533d;
+    transform: scale(1.05);
+}
+
+/* Кнопка збереження основної інфи */
+.save-info-btn {
+    background: #34495e;
+    color: white;
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.save-info-btn:hover {
+    background: #2c3e50;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Футер */
+footer {
+    flex-shrink: 0;
+    background-color: #333;
+    color: white;
+    padding: 40px 5%;
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* Анімації */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
+    .modal-grid { grid-template-columns: 1fr; }
+    .place-card, .trip-card { width: 45%; }
+}
+
+@media (max-width: 480px) {
+    .place-card, .trip-card { width: 100%; }
+    nav { flex-direction: column; }
+    .nav-links { margin-top: 15px; }
+}
+
+/* Контейнер фільтрів */
+.filter-section {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+    min-width: 200px;
+}
+
+.filter-group label {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #7f8c8d;
+    text-transform: uppercase;
+}
+
+.filter-group input, .filter-group select {
+    padding: 10px;
+    border: 2px solid #edf2f7;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.filter-group input:focus {
+    border-color: #ff6347;
+    outline: none;
+}
+
+/* Специфічні стилі для AddTripModal */
+.add-trip-modal {
+    max-width: 500px;
+    width: 90%;
+    padding: 0;
+    overflow: hidden;
+}
+
+.add-trip-form {
+    padding: 30px;
+}
+
+.add-trip-form .form-group {
+    margin-bottom: 20px;
+}
+
+.add-trip-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.add-trip-form input, 
+.add-trip-form textarea, 
+.add-trip-form select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #edf2f7;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.add-trip-form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.add-trip-form input:focus {
+    border-color: #ff6347;
+    outline: none;
+    background: #fff;
+}
+
+/* Кнопки в модалці */
+.modal-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.btn-submit {
+    flex: 2;
+    background: #ff6347;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-submit:hover {
+    background: #e5533d;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 99, 71, 0.3);
+}
+
+.btn-cancel {
+    flex: 1;
+    background: #f1f5f9;
+    color: #64748b;
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-cancel:hover {
+    background: #e2e8f0;
+}
+
+/* Контейнер фільтрації */
+.filter-section {
+    background: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+    border: 1px solid #edf2f7;
+}
+
+/* Напис перед селектом (якщо захочеш додати <label>) */
+.filter-section::before {
+    content: "Фільтрувати:";
+    font-weight: bold;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+/* Стилізація самого випадаючого списку */
+.select-filter {
+    appearance: none; /* Прибираємо стандартну стрілку браузера */
+    background-color: #fff;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23ff6347' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    padding: 10px 40px 10px 15px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #2c3e50;
+    border: 2px solid #edf2f7;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 220px;
+    outline: none;
+}
+
+/* Ефект при наведенні та фокусі */
+.select-filter:hover {
+    border-color: #ff6347;
+    box-shadow: 0 2px 8px rgba(255, 99, 71, 0.1);
+}
+
+.select-filter:focus {
+    border-color: #ff6347;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(255, 99, 71, 0.15);
+}
+
+/* Стилізація опцій (працює обмежено в деяких браузерах) */
+.select-filter option {
+    padding: 10px;
+    background: white;
+    color: #2c3e50;
+}
+
+/* Адаптивність для мобільних пристроїв */
+@media (max-width: 480px) {
+    .filter-section {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 15px;
+    }
+    
+    .select-filter {
+        width: 100%;
+    }
+}
+
+.list-filter-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid #edf2f7;
+    width: fit-content;
+    margin-left: 20px;
+}
+
+.select-filter-mini {
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #2c3e50;
+    cursor: pointer;
+    background: transparent;
+}
+
+.empty-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: #95a5a6;
+    font-style: italic;
+}
+
+@media (max-width: 480px) {
+    .list-filter-box {
+        width: 100%;
+        justify-content: center; /* Центруємо вміст на телефоні */
+    }
+}

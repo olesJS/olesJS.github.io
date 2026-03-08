@@ -12,7 +12,12 @@ if (!admin.apps.length) {
 const db = admin.firestore();
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin: ['https://olesjs.github.io', 'https://olesJS.github.io'],
+    methods: ['GET', 'POST', 'DELETE', 'PUT', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+}));
 app.use(express.json());
 
 const calculateDuration = (dateString) => {

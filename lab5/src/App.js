@@ -42,7 +42,7 @@ function App() {
 		if (user) {
 			const fetchMyTrips = async () => {
 				try {
-					const response = await fetch(`http://localhost:5000/api/trips/${user.uid}`);
+					const response = await fetch(`https://olesjs-github-io.onrender.com/api/trips/${user.uid}`);
 					if (response.ok) {
 						const tripsArray = await response.json();
 						setMyTrips(tripsArray);
@@ -76,7 +76,7 @@ function App() {
 		};
 	
 		try {
-			const response = await fetch('http://localhost:5000/api/trips', {
+			const response = await fetch('https://olesjs-github-io.onrender.com/api/trips', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -133,7 +133,7 @@ function App() {
 	const deleteTrip = async (tripId) => {
 		if (window.confirm("Ви впевнені, що хочете видалити цю подорож?")) {
 			try {
-				const response = await fetch(`http://localhost:5000/api/trips/${tripId}`, {
+				const response = await fetch(`https://olesjs-github-io.onrender.com/api/trips/${tripId}`, {
 					method: 'DELETE',
 				});
 	
@@ -190,7 +190,7 @@ function App() {
 	if (loading) return <div style={{textAlign: 'center', marginTop: '50px'}}>Завантаження...</div>;
 
 	return (
-		<Router>
+		<Router basename="/lab5">
 		<div className="app-container">
 			<Header user={user} /> {/* Передаємо користувача в Header */}
 			

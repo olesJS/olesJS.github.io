@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/olesJS.github.io/static/css/main.4a735817.css",
+    "main.js": "/olesJS.github.io/static/js/main.1921c975.js",
+    "static/js/453.9ea3b501.chunk.js": "/olesJS.github.io/static/js/453.9ea3b501.chunk.js",
+    "index.html": "/olesJS.github.io/index.html",
+    "main.4a735817.css.map": "/olesJS.github.io/static/css/main.4a735817.css.map",
+    "main.1921c975.js.map": "/olesJS.github.io/static/js/main.1921c975.js.map",
+    "453.9ea3b501.chunk.js.map": "/olesJS.github.io/static/js/453.9ea3b501.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4a735817.css",
+    "static/js/main.1921c975.js"
+  ]
+}

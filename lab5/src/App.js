@@ -190,7 +190,7 @@ function App() {
 	if (loading) return <div style={{textAlign: 'center', marginTop: '50px'}}>Завантаження...</div>;
 
 	return (
-		<Router basename="/lab5">
+		<Router basename="/">
 		<div className="app-container">
 			<Header user={user} /> {/* Передаємо користувача в Header */}
 			
